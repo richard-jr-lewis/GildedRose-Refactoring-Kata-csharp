@@ -208,3 +208,33 @@ public class The_Quality_Of_Backstage_Passes
         Assert.That(item.Quality, Is.LessThanOrEqualTo(50), "{0} is more than 50", new[] { nameof(item.Quality) });
     }
 }
+
+public class The_Quality_Of_A_Legendary_Item
+{
+    [TestCase("Sulfuras, Hand of Ragnaros", 0, 80)]
+    [TestCase("Sulfuras, Hand of Ragnaros", -1, 80)]
+    [TestCase("Sulfuras, Hand of Ragnaros", 0, 50)]
+    [TestCase("Sulfuras, Hand of Ragnaros", 0, 40)]
+    [TestCase("Sulfuras, Hand of Ragnaros", 0, 30)]
+    public void Never_Changes(string name, int sellIn, int quality)
+    {
+        Item item = new() { Name = name, SellIn = sellIn, Quality = quality };
+        var app = new GildedRose(new List<Item> { item });
+
+        app.UpdateQuality();
+
+        Assert.That(item.Quality, Is.EqualTo(quality), "{0} has changed", new[] { nameof(item.Quality) });
+    }
+
+    [TestCase("Sulfuras, Hand of Ragnaros", 0, 80)]
+    [TestCase("Sulfuras, Hand of Ragnaros", -1, 80)]
+    public void Is_80_And_Never_Alters(string name, int sellIn, int quality)
+    {
+        Item item = new() { Name = name, SellIn = sellIn, Quality = quality };
+        var app = new GildedRose(new List<Item> { item });
+
+        app.UpdateQuality();
+
+        Assert.That(item.Quality, Is.EqualTo(80), "{0} is not 80", new[] { nameof(item.Quality) });
+    }
+}
