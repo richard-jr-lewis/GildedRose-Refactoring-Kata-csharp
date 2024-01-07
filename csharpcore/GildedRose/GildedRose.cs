@@ -20,11 +20,11 @@ public class GildedRose
             var isBackstagePasses = item.Name == Names.BACKSTAGE_PASSES;
             var isSulfuras = item.Name == Names.SULFURAS;
 
-            int? changeQualityBy = 0;
+            int? changeQualityBy = null;
 
             if (isAgedBrie)
             {
-                changeQualityBy++;
+                changeQualityBy = 1;
 
                 item.SellIn--;
 
@@ -35,7 +35,7 @@ public class GildedRose
             }
             else if (isBackstagePasses)
             {
-                changeQualityBy++;
+                changeQualityBy = 1;
 
                 if (item.SellIn < 11)
                 {
@@ -56,11 +56,10 @@ public class GildedRose
             }
             else if (isSulfuras)
             {
-                changeQualityBy = null;
             }
             else
             {
-                changeQualityBy--;
+                changeQualityBy = -1;
 
                 item.SellIn--;
 
