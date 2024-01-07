@@ -20,7 +20,7 @@ public class GildedRose
             var isBackstagePasses = item.Name == Names.BACKSTAGE_PASSES;
             var isSulfuras = item.Name == Names.SULFURAS;
 
-            var changeQualityBy = 0;
+            int? changeQualityBy = 0;
 
             if (isAgedBrie)
             {
@@ -32,8 +32,6 @@ public class GildedRose
                 {
                     changeQualityBy++;
                 }
-
-                item.Quality = ChangeQuality(item.Quality, changeQualityBy);
             }
             else if (isBackstagePasses)
             {
@@ -55,11 +53,10 @@ public class GildedRose
                 {
                     changeQualityBy = -item.Quality;
                 }
-
-                item.Quality = ChangeQuality(item.Quality, changeQualityBy);
             }
             else if (isSulfuras)
             {
+                changeQualityBy = null;
             }
             else
             {
@@ -71,8 +68,11 @@ public class GildedRose
                 {
                     changeQualityBy--;
                 }
+            }
 
-                item.Quality = ChangeQuality(item.Quality, changeQualityBy);
+            if (changeQualityBy.HasValue)
+            {
+                item.Quality = ChangeQuality(item.Quality, changeQualityBy.Value);
             }
         }
     }
