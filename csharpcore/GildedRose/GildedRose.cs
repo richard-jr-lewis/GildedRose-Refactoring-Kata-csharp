@@ -35,14 +35,15 @@ public class GildedRose
             }
             else if (isBackstagePasses)
             {
-                changeQualityBy = Quality.BACKSTAGE_PASSES_CHANGE;
-
-                if (item.SellIn < SellIn.BACKSTAGE_PASSES_FIRST_DEADLINE)
+                if (item.SellIn > SellIn.BACKSTAGE_PASSES_FIRST_DEADLINE)
+                {
+                    changeQualityBy = Quality.BACKSTAGE_PASSES_CHANGE;
+                }
+                else if (item.SellIn > SellIn.BACKSTAGE_PASSES_FINAL_DEADLINE)
                 {
                     changeQualityBy = Quality.BACKSTAGE_PASSES_FIRST_DEADLINE_CHANGE;
                 }
-
-                if (item.SellIn < SellIn.BACKSTAGE_PASSES_FINAL_DEADLINE)
+                else
                 {
                     changeQualityBy = Quality.BACKSTAGE_PASSES_FINAL_DEADLINE_CHANGE;
                 }

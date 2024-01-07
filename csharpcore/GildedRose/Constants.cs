@@ -23,6 +23,6 @@ internal static class Quality
 internal static class SellIn
 {
     internal const int EXPIRY = 0;
-    internal const int BACKSTAGE_PASSES_FIRST_DEADLINE = 11;
-    internal const int BACKSTAGE_PASSES_FINAL_DEADLINE = 6;
+    internal const int BACKSTAGE_PASSES_FIRST_DEADLINE = 10;
+    internal const int BACKSTAGE_PASSES_FINAL_DEADLINE = 5;
 }
