@@ -65,30 +65,33 @@ public class GildedRose
                 item.SellIn--;
             }
 
-            if (item.SellIn < 0)
+            if (isAgedBrie)
             {
-                if (isAgedBrie)
+                if (item.SellIn < 0)
                 {
                     if (item.Quality < 50)
                     {
                         item.Quality++;
                     }
                 }
-                else
+            }
+            else if (isBackstagePasses)
+            {
+                if (item.SellIn < 0)
                 {
-                    if (isBackstagePasses)
+                    item.Quality = 0;
+                }
+            }
+            else if (isSulfuras)
+            {
+            }
+            else
+            {
+                if (item.SellIn < 0)
+                {
+                    if (item.Quality > 0)
                     {
-                        item.Quality = 0;
-                    }
-                    else if (isSulfuras)
-                    {
-                    }
-                    else
-                    {
-                        if (item.Quality > 0)
-                        {
-                            item.Quality--;
-                        }
+                        item.Quality--;
                     }
                 }
             }
