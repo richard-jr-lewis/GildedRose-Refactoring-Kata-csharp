@@ -19,28 +19,32 @@ public class GildedRose
             bool isBackstagePasses = item.Name == Names.BACKSTAGE_PASSES;
             bool isSulfuras = item.Name == Names.SULFURAS;
 
-            if (isAgedBrie || isBackstagePasses)
+            if (isAgedBrie)
+            {
+                if (item.Quality < 50)
+                {
+                    item.Quality++;
+                }
+            }
+            else if (isBackstagePasses)
             {
                 if (item.Quality < 50)
                 {
                     item.Quality++;
 
-                    if (isBackstagePasses)
+                    if (item.SellIn < 11)
                     {
-                        if (item.SellIn < 11)
+                        if (item.Quality < 50)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality++;
-                            }
+                            item.Quality++;
                         }
+                    }
 
-                        if (item.SellIn < 6)
+                    if (item.SellIn < 6)
+                    {
+                        if (item.Quality < 50)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality++;
-                            }
+                            item.Quality++;
                         }
                     }
                 }
@@ -80,8 +84,8 @@ public class GildedRose
                     {
                         if (!isSulfuras)
                         {
-                        if (item.Quality > 0)
-                        {
+                            if (item.Quality > 0)
+                            {
                                 item.Quality--;
                             }
                         }
