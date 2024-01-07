@@ -22,27 +22,27 @@ public class GildedRose
 
             if (isAgedBrie)
             {
-                item.Quality = Math.Min(++item.Quality, 50);
+                item.Quality = IncreaseQuality(item.Quality);
 
                 item.SellIn--;
 
                 if (item.SellIn < 0)
                 {
-                    item.Quality = Math.Min(++item.Quality, 50);
+                    item.Quality = IncreaseQuality(item.Quality);
                 }
             }
             else if (isBackstagePasses)
             {
-                item.Quality = Math.Min(++item.Quality, 50);
+                item.Quality = IncreaseQuality(item.Quality);
 
                 if (item.SellIn < 11)
                 {
-                    item.Quality = Math.Min(++item.Quality, 50);
+                    item.Quality = IncreaseQuality(item.Quality);
                 }
 
                 if (item.SellIn < 6)
                 {
-                    item.Quality = Math.Min(++item.Quality, 50);
+                    item.Quality = IncreaseQuality(item.Quality);
                 }
 
                 item.SellIn--;
@@ -68,4 +68,6 @@ public class GildedRose
             }
         }
     }
+
+    private static int IncreaseQuality(int quality) => Math.Min(++quality, 50);
 }
