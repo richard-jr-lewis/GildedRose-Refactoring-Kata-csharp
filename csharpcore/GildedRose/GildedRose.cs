@@ -21,7 +21,7 @@ public class GildedRose
                 {
                     if (item.Name != Names.SULFURAS)
                     {
-                        item.Quality = item.Quality - 1;
+                        item.Quality--;
                     }
                 }
             }
@@ -29,7 +29,7 @@ public class GildedRose
             {
                 if (item.Quality < 50)
                 {
-                    item.Quality = item.Quality + 1;
+                    item.Quality++;
 
                     if (item.Name == Names.BACKSTAGE_PASSES)
                     {
@@ -37,7 +37,7 @@ public class GildedRose
                         {
                             if (item.Quality < 50)
                             {
-                                item.Quality = item.Quality + 1;
+                                item.Quality++;
                             }
                         }
 
@@ -45,7 +45,7 @@ public class GildedRose
                         {
                             if (item.Quality < 50)
                             {
-                                item.Quality = item.Quality + 1;
+                                item.Quality++;
                             }
                         }
                     }
@@ -54,7 +54,7 @@ public class GildedRose
 
             if (item.Name != Names.SULFURAS)
             {
-                item.SellIn = item.SellIn - 1;
+                item.SellIn--;
             }
 
             if (item.SellIn < 0)
@@ -67,20 +67,20 @@ public class GildedRose
                         {
                             if (item.Name != Names.SULFURAS)
                             {
-                                item.Quality = item.Quality - 1;
+                                item.Quality--;
                             }
                         }
                     }
                     else
                     {
-                        item.Quality = item.Quality - item.Quality;
+                        item.Quality = 0;
                     }
                 }
                 else
                 {
                     if (item.Quality < 50)
                     {
-                        item.Quality = item.Quality + 1;
+                        item.Quality++;
                     }
                 }
             }
