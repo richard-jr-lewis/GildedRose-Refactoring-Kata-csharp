@@ -78,6 +78,6 @@ public class GildedRoseTest
 
         Assert.That(cake.Name, Is.EqualTo("Conjured Mana Cake"), "{0} {1} is not equal.", new[] { nameof(cake), nameof(cake.Name) });
         Assert.That(cake.SellIn, Is.EqualTo(2), "{0} {1} is not equal.", new[] { nameof(cake), nameof(cake.SellIn) });
-        Assert.That(cake.Quality, Is.EqualTo(5), "{0} {1} is not equal.", new[] { nameof(cake), nameof(cake.Quality) });
+        Assert.That(cake.Quality, Is.EqualTo(4), "{0} {1} is not equal.", new[] { nameof(cake), nameof(cake.Quality) });
     }
 }

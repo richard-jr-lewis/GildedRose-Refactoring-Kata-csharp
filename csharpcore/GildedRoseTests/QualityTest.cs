@@ -238,3 +238,34 @@ public class The_Quality_Of_A_Legendary_Item
         Assert.That(item.Quality, Is.EqualTo(80), "{0} is not 80", new[] { nameof(item.Quality) });
     }
 }
+
+public class The_Quality_Of_A_Conjured_Item
+{
+    [TestCase("Conjured Mana Cake", 3, 6)]
+    [TestCase("Conjured Armour", 2, 5)]
+    [TestCase("Conjured Root Beer", 1, 3)]
+    public void Degrades_Twice_As_Fast_As_Normal_Items_Before_The_Sell_By_Date_Has_Passed(string name, int sellIn, int quality)
+    {
+        Item item = new() { Name = name, SellIn = sellIn, Quality = quality };
+        var app = new GildedRose(new List<Item> { item });
+
+        app.UpdateQuality();
+
+        Assert.That(item.SellIn, Is.GreaterThanOrEqualTo(0), "{0} date has passed. {0} = {1}", new[] { nameof(item.SellIn), item.SellIn.ToString() });
+        Assert.That(item.Quality, Is.EqualTo(quality - 2), "{0} did not degrade twice as fast", new[] { nameof(item.Quality) });
+    }
+
+    [TestCase("Conjured Mana Cake", 0, 6)]
+    [TestCase("Conjured Armour", -1, 10)]
+    [TestCase("Conjured Root Beer", -2, 9)]
+    public void Degrades_Twice_As_Fast_As_Normal_Items_Once_The_Sell_By_Date_Has_Passed(string name, int sellIn, int quality)
+    {
+        Item item = new() { Name = name, SellIn = sellIn, Quality = quality };
+        var app = new GildedRose(new List<Item> { item });
+
+        app.UpdateQuality();
+
+        Assert.That(item.SellIn, Is.LessThan(0), "{0} date has not passed. {0} = {1}", new[] { nameof(item.SellIn), item.SellIn.ToString() });
+        Assert.That(item.Quality, Is.EqualTo(quality - 4), "{0} did not degrade twice as fast", new[] { nameof(item.Quality) });
+    }
+}

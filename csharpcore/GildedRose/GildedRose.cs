@@ -19,6 +19,7 @@ public class GildedRose
             var isAgedBrie = item.Name == Names.AGED_BRIE;
             var isBackstagePasses = item.Name == Names.BACKSTAGE_PASSES;
             var isSulfuras = item.Name == Names.SULFURAS;
+            var isConjured = item.Name.StartsWith(Names.CONJURED, StringComparison.InvariantCultureIgnoreCase);
 
             int? changeQualityBy = null;
 
@@ -47,6 +48,10 @@ public class GildedRose
             }
             else if (isSulfuras)
             {
+            }
+            else if (isConjured)
+            {
+                changeQualityBy = item.SellIn > SellIn.EXPIRY ? Quality.CONJURED_CHANGE : Quality.CONJURED_EXPIRED_CHANGE;
             }
             else
             {
