@@ -14,7 +14,7 @@ public class GildedRoseTest
 
         app.UpdateQuality();
 
-        Assert.AreEqual("foo", items[0].Name);
+        Assert.That(items[0].Name, Is.EqualTo("foo"));
     }
 
     [Test]
@@ -44,40 +44,43 @@ public class GildedRoseTest
 
         app.UpdateQuality();
 
-        Assert.That(vest.Name, Is.EqualTo("+5 Dexterity Vest"), "{0} {1} is not equal.", new[] { nameof(vest), nameof(vest.Name) });
-        Assert.That(vest.SellIn, Is.EqualTo(9), "{0} {1} is not equal.", new[] { nameof(vest), nameof(vest.SellIn) });
-        Assert.That(vest.Quality, Is.EqualTo(19), "{0} {1} is not equal.", new[] { nameof(vest), nameof(vest.Quality) });
+        Assert.Multiple(() =>
+        {
+            Assert.That(vest.Name, Is.EqualTo("+5 Dexterity Vest"), $"{nameof(vest)} {nameof(vest.Name)} is not equal.");
+            Assert.That(vest.SellIn, Is.EqualTo(9), $"{nameof(vest)} {nameof(vest.SellIn)} is not equal.");
+            Assert.That(vest.Quality, Is.EqualTo(19), $"{nameof(vest)} {nameof(vest.Quality)} is not equal.");
 
-        Assert.That(brie.Name, Is.EqualTo("Aged Brie"), "{0} {1} is not equal.", new[] { nameof(brie), nameof(brie.Name) });
-        Assert.That(brie.SellIn, Is.EqualTo(1), "{0} {1} is not equal.", new[] { nameof(brie), nameof(brie.SellIn) });
-        Assert.That(brie.Quality, Is.EqualTo(1), "{0} {1} is not equal.", new[] { nameof(brie), nameof(brie.Quality) });
+            Assert.That(brie.Name, Is.EqualTo("Aged Brie"), $"{nameof(brie)} {nameof(brie.Name)} is not equal.");
+            Assert.That(brie.SellIn, Is.EqualTo(1), $"{nameof(brie)} {nameof(brie.SellIn)} is not equal.");
+            Assert.That(brie.Quality, Is.EqualTo(1), $"{nameof(brie)} {nameof(brie.Quality)} is not equal.");
 
-        Assert.That(elixir.Name, Is.EqualTo("Elixir of the Mongoose"), "{0} {1} is not equal.", new[] { nameof(elixir), nameof(elixir.Name) });
-        Assert.That(elixir.SellIn, Is.EqualTo(4), "{0} {1} is not equal.", new[] { nameof(elixir), nameof(elixir.SellIn) });
-        Assert.That(elixir.Quality, Is.EqualTo(6), "{0} {1} is not equal.", new[] { nameof(elixir), nameof(elixir.Quality) });
+            Assert.That(elixir.Name, Is.EqualTo("Elixir of the Mongoose"), $"{nameof(elixir)} {nameof(elixir.Name)} is not equal.");
+            Assert.That(elixir.SellIn, Is.EqualTo(4), $"{nameof(elixir)} {nameof(elixir.SellIn)} is not equal.");
+            Assert.That(elixir.Quality, Is.EqualTo(6), $"{nameof(elixir)} {nameof(elixir.Quality)} is not equal.");
 
-        Assert.That(sulfuras1.Name, Is.EqualTo("Sulfuras, Hand of Ragnaros"), "{0} {1} is not equal.", new[] { nameof(sulfuras1), nameof(sulfuras1.Name) });
-        Assert.That(sulfuras1.SellIn, Is.EqualTo(0), "{0} {1} is not equal.", new[] { nameof(sulfuras1), nameof(sulfuras1.SellIn) });
-        Assert.That(sulfuras1.Quality, Is.EqualTo(80), "{0} {1} is not equal.", new[] { nameof(sulfuras1), nameof(sulfuras1.Quality) });
+            Assert.That(sulfuras1.Name, Is.EqualTo("Sulfuras, Hand of Ragnaros"), $"{nameof(sulfuras1)} {nameof(sulfuras1.Name)} is not equal.");
+            Assert.That(sulfuras1.SellIn, Is.EqualTo(0), $"{nameof(sulfuras1)} {nameof(sulfuras1.SellIn)} is not equal.");
+            Assert.That(sulfuras1.Quality, Is.EqualTo(80), $"{nameof(sulfuras1)} {nameof(sulfuras1.Quality)} is not equal.");
 
-        Assert.That(sulfuras2.Name, Is.EqualTo("Sulfuras, Hand of Ragnaros"), "{0} {1} is not equal.", new[] { nameof(sulfuras2), nameof(sulfuras2.Name) });
-        Assert.That(sulfuras2.SellIn, Is.EqualTo(-1), "{0} {1} is not equal.", new[] { nameof(sulfuras2), nameof(sulfuras2.SellIn) });
-        Assert.That(sulfuras2.Quality, Is.EqualTo(80), "{0} {1} is not equal.", new[] { nameof(sulfuras2), nameof(sulfuras2.Quality) });
+            Assert.That(sulfuras2.Name, Is.EqualTo("Sulfuras, Hand of Ragnaros"), $"{nameof(sulfuras2)} {nameof(sulfuras2.Name)} is not equal.");
+            Assert.That(sulfuras2.SellIn, Is.EqualTo(-1), $"{nameof(sulfuras2)} {nameof(sulfuras2.SellIn)} is not equal.");
+            Assert.That(sulfuras2.Quality, Is.EqualTo(80), $"{nameof(sulfuras2)} {nameof(sulfuras2.Quality)} is not equal.");
 
-        Assert.That(pass1.Name, Is.EqualTo("Backstage passes to a TAFKAL80ETC concert"), "{0} {1} is not equal.", new[] { nameof(pass1), nameof(pass1.Name) });
-        Assert.That(pass1.SellIn, Is.EqualTo(14), "{0} {1} is not equal.", new[] { nameof(pass1), nameof(pass1.SellIn) });
-        Assert.That(pass1.Quality, Is.EqualTo(21), "{0} {1} is not equal.", new[] { nameof(pass1), nameof(pass1.Quality) });
+            Assert.That(pass1.Name, Is.EqualTo("Backstage passes to a TAFKAL80ETC concert"), $"{nameof(pass1)} {nameof(pass1.Name)} is not equal.");
+            Assert.That(pass1.SellIn, Is.EqualTo(14), $"{nameof(pass1)} {nameof(pass1.SellIn)} is not equal.");
+            Assert.That(pass1.Quality, Is.EqualTo(21), $"{nameof(pass1)} {nameof(pass1.Quality)} is not equal.");
 
-        Assert.That(pass2.Name, Is.EqualTo("Backstage passes to a TAFKAL80ETC concert"), "{0} {1} is not equal.", new[] { nameof(pass2), nameof(pass2.Name) });
-        Assert.That(pass2.SellIn, Is.EqualTo(9), "{0} {1} is not equal.", new[] { nameof(pass2), nameof(pass2.SellIn) });
-        Assert.That(pass2.Quality, Is.EqualTo(50), "{0} {1} is not equal.", new[] { nameof(pass2), nameof(pass2.Quality) });
+            Assert.That(pass2.Name, Is.EqualTo("Backstage passes to a TAFKAL80ETC concert"), $"{nameof(pass2)} {nameof(pass2.Name)} is not equal.");
+            Assert.That(pass2.SellIn, Is.EqualTo(9), $"{nameof(pass2)} {nameof(pass2.SellIn)} is not equal.");
+            Assert.That(pass2.Quality, Is.EqualTo(50), $"{nameof(pass2)} {nameof(pass2.Quality)} is not equal.");
 
-        Assert.That(pass3.Name, Is.EqualTo("Backstage passes to a TAFKAL80ETC concert"), "{0} {1} is not equal.", new[] { nameof(pass3), nameof(pass3.Name) });
-        Assert.That(pass3.SellIn, Is.EqualTo(4), "{0} {1} is not equal.", new[] { nameof(pass3), nameof(pass3.SellIn) });
-        Assert.That(pass3.Quality, Is.EqualTo(50), "{0} {1} is not equal.", new[] { nameof(pass3), nameof(pass3.Quality) });
+            Assert.That(pass3.Name, Is.EqualTo("Backstage passes to a TAFKAL80ETC concert"), $"{nameof(pass3)} {nameof(pass3.Name)} is not equal.");
+            Assert.That(pass3.SellIn, Is.EqualTo(4), $"{nameof(pass3)} {nameof(pass3.SellIn)} is not equal.");
+            Assert.That(pass3.Quality, Is.EqualTo(50), $"{nameof(pass3)} {nameof(pass3.Quality)} is not equal.");
 
-        Assert.That(cake.Name, Is.EqualTo("Conjured Mana Cake"), "{0} {1} is not equal.", new[] { nameof(cake), nameof(cake.Name) });
-        Assert.That(cake.SellIn, Is.EqualTo(2), "{0} {1} is not equal.", new[] { nameof(cake), nameof(cake.SellIn) });
-        Assert.That(cake.Quality, Is.EqualTo(4), "{0} {1} is not equal.", new[] { nameof(cake), nameof(cake.Quality) });
+            Assert.That(cake.Name, Is.EqualTo("Conjured Mana Cake"), $"{nameof(cake)} {nameof(cake.Name)} is not equal.");
+            Assert.That(cake.SellIn, Is.EqualTo(2), $"{nameof(cake)} {nameof(cake.SellIn)} is not equal.");
+            Assert.That(cake.Quality, Is.EqualTo(4), $"{nameof(cake)} {nameof(cake.Quality)} is not equal.");
+        });
     }
 }

@@ -20,8 +20,11 @@ public class The_Quality_Of_A_Normal_Item
 
         app.UpdateQuality();
 
-        Assert.That(item.SellIn, Is.GreaterThanOrEqualTo(0), "{0} date has passed. {0} = {1}", new[] { nameof(item.SellIn), item.SellIn.ToString() });
-        Assert.That(item.Quality, Is.EqualTo(quality - 1), "{0} did not decrease by 1. {0} = {1}", new[] { nameof(item.Quality), item.Quality.ToString() });
+        Assert.Multiple(() =>
+        {
+            Assert.That(item.SellIn, Is.GreaterThanOrEqualTo(0), $"{nameof(item.SellIn)} date has passed. {nameof(item.SellIn)} = {item.SellIn}");
+            Assert.That(item.Quality, Is.EqualTo(quality - 1), $"{nameof(item.Quality)} did not decrease by 1. {nameof(item.Quality)} = {item.Quality}");
+        });
     }
 
     [TestCase("normal item", 0, 5)]
@@ -34,8 +37,11 @@ public class The_Quality_Of_A_Normal_Item
 
         app.UpdateQuality();
 
-        Assert.That(item.SellIn, Is.LessThan(0), "{0} date has not passed. {0} = {1}", new[] { nameof(item.SellIn), item.SellIn.ToString() });
-        Assert.That(item.Quality, Is.EqualTo(quality - 2), "{0} did not decrease by 2. {0} = {1}", new[] { nameof(item.Quality), item.Quality.ToString() });
+        Assert.Multiple(() =>
+        {
+            Assert.That(item.SellIn, Is.LessThan(0), $"{nameof(item.SellIn)} date has not passed. {nameof(item.SellIn)} = {item.SellIn}");
+            Assert.That(item.Quality, Is.EqualTo(quality - 2), $"{nameof(item.Quality)} did not decrease by 2. {nameof(item.Quality)} = {item.Quality}");
+        });
     }
 
     [TestCase("normal item", 10, 20)]
@@ -52,7 +58,7 @@ public class The_Quality_Of_A_Normal_Item
 
         app.UpdateQuality();
 
-        Assert.That(item.Quality, Is.GreaterThanOrEqualTo(0), "{0} is negative", new[] { nameof(item.Quality) });
+        Assert.That(item.Quality, Is.GreaterThanOrEqualTo(0), $"{nameof(item.Quality)} is negative");
     }
 
     [TestCase("normal item", 10, 20)]
@@ -69,7 +75,7 @@ public class The_Quality_Of_A_Normal_Item
 
         app.UpdateQuality();
 
-        Assert.That(item.Quality, Is.LessThanOrEqualTo(50), "{0} is more than 50", new[] { nameof(item.Quality) });
+        Assert.That(item.Quality, Is.LessThanOrEqualTo(50), $"{nameof(item.Quality)} is more than 50");
     }
 }
 
@@ -87,8 +93,11 @@ public class The_Quality_Of_Aged_Brie
 
         app.UpdateQuality();
 
-        Assert.That(item.SellIn, Is.GreaterThanOrEqualTo(0), "{0} date has passed. {0} = {1}", new[] { nameof(item.SellIn), item.SellIn.ToString() });
-        Assert.That(item.Quality, Is.EqualTo(quality + 1), "{0} did not increase by 1. {0} = {1}", new[] { nameof(item.Quality), item.Quality.ToString() });
+        Assert.Multiple(() =>
+        {
+            Assert.That(item.SellIn, Is.GreaterThanOrEqualTo(0), $"{nameof(item.SellIn)} date has passed. {nameof(item.SellIn)} = {item.SellIn}");
+            Assert.That(item.Quality, Is.EqualTo(quality + 1), $"{nameof(item.Quality)} did not increase by 1. {nameof(item.Quality)} = {item.Quality}");
+        });
     }
 
     [TestCase("Aged Brie", 0, 5)]
@@ -101,8 +110,11 @@ public class The_Quality_Of_Aged_Brie
 
         app.UpdateQuality();
 
-        Assert.That(item.SellIn, Is.LessThan(0), "{0} date has not passed. {0} = {1}", new[] { nameof(item.SellIn), item.SellIn.ToString() });
-        Assert.That(item.Quality, Is.EqualTo(quality + 2), "{0} did not increase by 2. {0} = {1}", new[] { nameof(item.Quality), item.Quality.ToString() });
+        Assert.Multiple(() =>
+        {
+            Assert.That(item.SellIn, Is.LessThan(0), $"{nameof(item.SellIn)} date has not passed. {nameof(item.SellIn)} = {item.SellIn}");
+            Assert.That(item.Quality, Is.EqualTo(quality + 2), $"{nameof(item.Quality)} did not increase by 2. {nameof(item.Quality)} = {item.Quality}");
+        });
     }
 
     [TestCase("Aged Brie", 10, 20)]
@@ -120,7 +132,7 @@ public class The_Quality_Of_Aged_Brie
 
         app.UpdateQuality();
 
-        Assert.That(item.Quality, Is.LessThanOrEqualTo(50), "{0} is more than 50", new[] { nameof(item.Quality) });
+        Assert.That(item.Quality, Is.LessThanOrEqualTo(50), $"{nameof(item.Quality)} is more than 50");
     }
 }
 
@@ -139,7 +151,7 @@ public class The_Quality_Of_Backstage_Passes
 
         app.UpdateQuality();
 
-        Assert.That(item.Quality, Is.EqualTo(quality + 1), "{0} did not increase by 1. {0} = {1}", new[] { nameof(item.Quality), item.Quality.ToString() });
+        Assert.That(item.Quality, Is.EqualTo(quality + 1), $"{nameof(item.Quality)} did not increase by 1. {nameof(item.Quality)} = {item.Quality}");
     }
 
     [TestCase("Backstage passes to a TAFKAL80ETC concert", 10, 0)]
@@ -154,7 +166,7 @@ public class The_Quality_Of_Backstage_Passes
 
         app.UpdateQuality();
 
-        Assert.That(item.Quality, Is.EqualTo(quality + 2), "{0} did not increase by 2. {0} = {1}", new[] { nameof(item.Quality), item.Quality.ToString() });
+        Assert.That(item.Quality, Is.EqualTo(quality + 2), $"{nameof(item.Quality)} did not increase by 2. {nameof(item.Quality)} = {item.Quality}");
     }
 
     [TestCase("Backstage passes to a TAFKAL80ETC concert", 5, 0)]
@@ -169,7 +181,7 @@ public class The_Quality_Of_Backstage_Passes
 
         app.UpdateQuality();
 
-        Assert.That(item.Quality, Is.EqualTo(quality + 3), "{0} did not increase by 3. {0} = {1}", new[] { nameof(item.Quality), item.Quality.ToString() });
+        Assert.That(item.Quality, Is.EqualTo(quality + 3), $"{nameof(item.Quality)} did not increase by 3. {nameof(item.Quality)} = {item.Quality}");
     }
 
     [TestCase("Backstage passes to a TAFKAL80ETC concert", 0, 0)]
@@ -184,7 +196,7 @@ public class The_Quality_Of_Backstage_Passes
 
         app.UpdateQuality();
 
-        Assert.That(item.Quality, Is.EqualTo(0), "{0} is not 0", new[] { nameof(item.Quality) });
+        Assert.That(item.Quality, Is.EqualTo(0), $"{nameof(item.Quality)} is not 0");
     }
 
     [TestCase("Backstage passes to a TAFKAL80ETC concert", 15, 20)]
@@ -205,7 +217,7 @@ public class The_Quality_Of_Backstage_Passes
 
         app.UpdateQuality();
 
-        Assert.That(item.Quality, Is.LessThanOrEqualTo(50), "{0} is more than 50", new[] { nameof(item.Quality) });
+        Assert.That(item.Quality, Is.LessThanOrEqualTo(50), $"{nameof(item.Quality)} is more than 50");
     }
 }
 
@@ -223,7 +235,7 @@ public class The_Quality_Of_A_Legendary_Item
 
         app.UpdateQuality();
 
-        Assert.That(item.Quality, Is.EqualTo(quality), "{0} has changed", new[] { nameof(item.Quality) });
+        Assert.That(item.Quality, Is.EqualTo(quality), $"{nameof(item.Quality)} has changed");
     }
 
     [TestCase("Sulfuras, Hand of Ragnaros", 0, 80)]
@@ -235,7 +247,7 @@ public class The_Quality_Of_A_Legendary_Item
 
         app.UpdateQuality();
 
-        Assert.That(item.Quality, Is.EqualTo(80), "{0} is not 80", new[] { nameof(item.Quality) });
+        Assert.That(item.Quality, Is.EqualTo(80), $"{nameof(item.Quality)} is not 80");
     }
 }
 
@@ -251,8 +263,11 @@ public class The_Quality_Of_A_Conjured_Item
 
         app.UpdateQuality();
 
-        Assert.That(item.SellIn, Is.GreaterThanOrEqualTo(0), "{0} date has passed. {0} = {1}", new[] { nameof(item.SellIn), item.SellIn.ToString() });
-        Assert.That(item.Quality, Is.EqualTo(quality - 2), "{0} did not degrade twice as fast", new[] { nameof(item.Quality) });
+        Assert.Multiple(() =>
+        {
+            Assert.That(item.SellIn, Is.GreaterThanOrEqualTo(0), $"{nameof(item.SellIn)} date has passed. {nameof(item.SellIn)} = {item.SellIn}");
+            Assert.That(item.Quality, Is.EqualTo(quality - 2), $"{nameof(item.Quality)} did not degrade twice as fast");
+        });
     }
 
     [TestCase("Conjured Mana Cake", 0, 6)]
@@ -265,7 +280,10 @@ public class The_Quality_Of_A_Conjured_Item
 
         app.UpdateQuality();
 
-        Assert.That(item.SellIn, Is.LessThan(0), "{0} date has not passed. {0} = {1}", new[] { nameof(item.SellIn), item.SellIn.ToString() });
-        Assert.That(item.Quality, Is.EqualTo(quality - 4), "{0} did not degrade twice as fast", new[] { nameof(item.Quality) });
+        Assert.Multiple(() =>
+        {
+            Assert.That(item.SellIn, Is.LessThan(0), $"{nameof(item.SellIn)} date has not passed. {nameof(item.SellIn)} = {item.SellIn}");
+            Assert.That(item.Quality, Is.EqualTo(quality - 4), $"{nameof(item.Quality)} did not degrade twice as fast");
+        });
     }
 }

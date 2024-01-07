@@ -23,8 +23,11 @@ public class The_SellIn_Of_A_Non_Legendary_Item
 
         app.UpdateQuality();
 
-        Assert.That(item.Name, Is.Not.EqualTo("Sulfuras, Hand of Ragnaros"), "{0} is legendary. {0} = {1}", new[] { nameof(item.Name), item.Name });
-        Assert.That(item.SellIn, Is.EqualTo(sellIn - 1), "{0} has not decreased by 1. {0} = {1}", new[] { nameof(item.SellIn), item.SellIn.ToString() });
+        Assert.Multiple(() =>
+        {
+            Assert.That(item.Name, Is.Not.EqualTo("Sulfuras, Hand of Ragnaros"), $"{nameof(item.Name)} is legendary. {nameof(item.Name)} = {item.Name}");
+            Assert.That(item.SellIn, Is.EqualTo(sellIn - 1), $"{nameof(item.SellIn)} has not decreased by 1. {nameof(item.SellIn)} = {item.SellIn}");
+        });
     }
 }
 
@@ -47,7 +50,10 @@ public class The_SellIn_Of_A_Legendary_Item
 
         app.UpdateQuality();
 
-        Assert.That(item.Name, Is.EqualTo("Sulfuras, Hand of Ragnaros"), "{0} is not legendary. {0} = {1}", new[] { nameof(item.Name), item.Name });
-        Assert.That(item.SellIn, Is.EqualTo(sellIn), "{0} has changed. {0} = {1}", new[] { nameof(item.SellIn), item.SellIn.ToString() });
+        Assert.Multiple(() =>
+        {
+            Assert.That(item.Name, Is.EqualTo("Sulfuras, Hand of Ragnaros"), $"{nameof(item.Name)} is not legendary. {nameof(item.Name)} = {item.Name}");
+            Assert.That(item.SellIn, Is.EqualTo(sellIn), $"{nameof(item.SellIn)} has changed. {nameof(item.SellIn)} = {item.SellIn}");
+        });
     }
 }
