@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GildedRoseKata;
 
@@ -21,42 +22,27 @@ public class GildedRose
 
             if (isAgedBrie)
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality++;
-                }
+                item.Quality = Math.Min(++item.Quality, 50);
 
                 item.SellIn--;
 
                 if (item.SellIn < 0)
                 {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality++;
-                    }
+                    item.Quality = Math.Min(++item.Quality, 50);
                 }
             }
             else if (isBackstagePasses)
             {
-                if (item.Quality < 50)
+                item.Quality = Math.Min(++item.Quality, 50);
+
+                if (item.SellIn < 11)
                 {
-                    item.Quality++;
+                    item.Quality = Math.Min(++item.Quality, 50);
+                }
 
-                    if (item.SellIn < 11)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality++;
-                        }
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality++;
-                        }
-                    }
+                if (item.SellIn < 6)
+                {
+                    item.Quality = Math.Min(++item.Quality, 50);
                 }
 
                 item.SellIn--;
@@ -71,19 +57,13 @@ public class GildedRose
             }
             else
             {
-                if (item.Quality > 0)
-                {
-                    item.Quality--;
-                }
+                item.Quality = Math.Max(--item.Quality, 0);
 
                 item.SellIn--;
 
                 if (item.SellIn < 0)
                 {
-                    if (item.Quality > 0)
-                    {
-                        item.Quality--;
-                    }
+                    item.Quality = Math.Max(--item.Quality, 0);
                 }
             }
         }
