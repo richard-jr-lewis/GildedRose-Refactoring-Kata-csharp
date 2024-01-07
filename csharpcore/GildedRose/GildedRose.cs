@@ -24,27 +24,27 @@ public class GildedRose
 
             if (isAgedBrie)
             {
-                changeQualityBy = Quality.DEFAULT_INCREASE;
+                changeQualityBy = Quality.AGED_BRIE_CHANGE;
 
                 item.SellIn--;
 
                 if (item.SellIn < SellIn.EXPIRY)
                 {
-                    changeQualityBy++;
+                    changeQualityBy = Quality.AGED_BRIE_EXPIRED_CHANGE;
                 }
             }
             else if (isBackstagePasses)
             {
-                changeQualityBy = Quality.DEFAULT_INCREASE;
+                changeQualityBy = Quality.BACKSTAGE_PASSES_CHANGE;
 
                 if (item.SellIn < SellIn.BACKSTAGE_PASSES_FIRST_DEADLINE)
                 {
-                    changeQualityBy++;
+                    changeQualityBy = Quality.BACKSTAGE_PASSES_FIRST_DEADLINE_CHANGE;
                 }
 
                 if (item.SellIn < SellIn.BACKSTAGE_PASSES_FINAL_DEADLINE)
                 {
-                    changeQualityBy++;
+                    changeQualityBy = Quality.BACKSTAGE_PASSES_FINAL_DEADLINE_CHANGE;
                 }
 
                 item.SellIn--;
@@ -59,13 +59,13 @@ public class GildedRose
             }
             else
             {
-                changeQualityBy = Quality.DEFAULT_DECREASE;
+                changeQualityBy = Quality.DEFAULT_CHANGE;
 
                 item.SellIn--;
 
                 if (item.SellIn < SellIn.EXPIRY)
                 {
-                    changeQualityBy--;
+                    changeQualityBy = -2;
                 }
             }
 

@@ -11,8 +11,13 @@ internal static class Quality
 {
     internal const int MIN= 0;
     internal const int MAX= 50;
-    internal const int DEFAULT_DECREASE = -1;
-    internal const int DEFAULT_INCREASE = 1;
+    internal const int DEFAULT_CHANGE = -1;
+    internal const int AGED_BRIE_CHANGE = 1;
+    internal const int DEFAULT_EXPIRED_CHANGE = -2;
+    internal const int AGED_BRIE_EXPIRED_CHANGE = 2;
+    internal const int BACKSTAGE_PASSES_CHANGE = 1;
+    internal const int BACKSTAGE_PASSES_FIRST_DEADLINE_CHANGE = 2;
+    internal const int BACKSTAGE_PASSES_FINAL_DEADLINE_CHANGE = 3;
 }
 
 internal static class SellIn
