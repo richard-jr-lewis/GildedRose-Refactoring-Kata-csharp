@@ -22,27 +22,27 @@ public class GildedRose
 
             if (isAgedBrie)
             {
-                item.Quality = IncreaseQuality(item.Quality);
+                item.Quality = ChangeQuality(item.Quality, 1);
 
                 item.SellIn--;
 
                 if (item.SellIn < 0)
                 {
-                    item.Quality = IncreaseQuality(item.Quality);
+                    item.Quality = ChangeQuality(item.Quality, 1);
                 }
             }
             else if (isBackstagePasses)
             {
-                item.Quality = IncreaseQuality(item.Quality);
+                item.Quality = ChangeQuality(item.Quality, 1);
 
                 if (item.SellIn < 11)
                 {
-                    item.Quality = IncreaseQuality(item.Quality);
+                    item.Quality = ChangeQuality(item.Quality, 1);
                 }
 
                 if (item.SellIn < 6)
                 {
-                    item.Quality = IncreaseQuality(item.Quality);
+                    item.Quality = ChangeQuality(item.Quality, 1);
                 }
 
                 item.SellIn--;
@@ -57,19 +57,17 @@ public class GildedRose
             }
             else
             {
-                item.Quality = DecreaseQuality(item.Quality);
+                item.Quality = ChangeQuality(item.Quality, -1);
 
                 item.SellIn--;
 
                 if (item.SellIn < 0)
                 {
-                    item.Quality = DecreaseQuality(item.Quality);
+                    item.Quality = ChangeQuality(item.Quality, -1);
                 }
             }
         }
     }
 
-    private static int IncreaseQuality(int quality) => Math.Min(++quality, 50);
-
-    private static int DecreaseQuality(int quality) => Math.Max(--quality, 0);
+    private static int ChangeQuality(int quality, int changeBy) => Math.Clamp(quality + changeBy, 0, 50);
 }
