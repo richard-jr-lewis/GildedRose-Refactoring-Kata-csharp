@@ -80,14 +80,14 @@ public class GildedRose
                     {
                         item.Quality = 0;
                     }
+                    else if (isSulfuras)
+                    {
+                    }
                     else
                     {
-                        if (!isSulfuras)
+                        if (item.Quality > 0)
                         {
-                            if (item.Quality > 0)
-                            {
-                                item.Quality--;
-                            }
+                            item.Quality--;
                         }
                     }
                 }
