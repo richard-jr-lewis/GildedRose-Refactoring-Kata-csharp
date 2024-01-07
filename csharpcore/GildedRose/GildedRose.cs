@@ -49,14 +49,14 @@ public class GildedRose
                     changeQualityBy++;
                 }
 
-                item.Quality = ChangeQuality(item.Quality, changeQualityBy);
-
                 item.SellIn--;
 
                 if (item.SellIn < 0)
                 {
-                    item.Quality = 0;
+                    changeQualityBy = -item.Quality;
                 }
+
+                item.Quality = ChangeQuality(item.Quality, changeQualityBy);
             }
             else if (isSulfuras)
             {
