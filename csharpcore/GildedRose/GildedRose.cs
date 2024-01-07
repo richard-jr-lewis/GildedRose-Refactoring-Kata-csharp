@@ -25,8 +25,6 @@ public class GildedRose
             if (isAgedBrie)
             {
                 changeQualityBy = item.SellIn > SellIn.EXPIRY ? Quality.AGED_BRIE_CHANGE : Quality.AGED_BRIE_EXPIRED_CHANGE;
-
-                item.SellIn--;
             }
             else if (isBackstagePasses)
             {
@@ -46,8 +44,6 @@ public class GildedRose
                 {
                     changeQualityBy = -item.Quality;
                 }
-
-                item.SellIn--;
             }
             else if (isSulfuras)
             {
@@ -55,13 +51,13 @@ public class GildedRose
             else
             {
                 changeQualityBy = item.SellIn > SellIn.EXPIRY ? Quality.DEFAULT_CHANGE : Quality.DEFAULT_EXPIRED_CHANGE;
-
-                item.SellIn--;
             }
 
             if (changeQualityBy.HasValue)
             {
                 item.Quality = ChangeQuality(item.Quality, changeQualityBy.Value);
+
+                item.SellIn--;
             }
         }
     }
