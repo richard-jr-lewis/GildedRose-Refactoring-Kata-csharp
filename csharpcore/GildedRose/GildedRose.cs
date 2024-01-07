@@ -16,34 +16,40 @@ public class GildedRose
     {
         foreach (Item item in _items)
         {
-            bool isAgedBrie = item.Name == Names.AGED_BRIE;
-            bool isBackstagePasses = item.Name == Names.BACKSTAGE_PASSES;
-            bool isSulfuras = item.Name == Names.SULFURAS;
+            var isAgedBrie = item.Name == Names.AGED_BRIE;
+            var isBackstagePasses = item.Name == Names.BACKSTAGE_PASSES;
+            var isSulfuras = item.Name == Names.SULFURAS;
+
+            var changeQualityBy = 0;
 
             if (isAgedBrie)
             {
-                item.Quality = ChangeQuality(item.Quality, 1);
+                changeQualityBy++;
 
                 item.SellIn--;
 
                 if (item.SellIn < 0)
                 {
-                    item.Quality = ChangeQuality(item.Quality, 1);
+                    changeQualityBy++;
                 }
+
+                item.Quality = ChangeQuality(item.Quality, changeQualityBy);
             }
             else if (isBackstagePasses)
             {
-                item.Quality = ChangeQuality(item.Quality, 1);
+                changeQualityBy++;
 
                 if (item.SellIn < 11)
                 {
-                    item.Quality = ChangeQuality(item.Quality, 1);
+                    changeQualityBy++;
                 }
 
                 if (item.SellIn < 6)
                 {
-                    item.Quality = ChangeQuality(item.Quality, 1);
+                    changeQualityBy++;
                 }
+
+                item.Quality = ChangeQuality(item.Quality, changeQualityBy);
 
                 item.SellIn--;
 
@@ -57,17 +63,19 @@ public class GildedRose
             }
             else
             {
-                item.Quality = ChangeQuality(item.Quality, -1);
+                changeQualityBy--;
 
                 item.SellIn--;
 
                 if (item.SellIn < 0)
                 {
-                    item.Quality = ChangeQuality(item.Quality, -1);
+                    changeQualityBy--;
                 }
+
+                item.Quality = ChangeQuality(item.Quality, changeQualityBy);
             }
         }
     }
 
-    private static int ChangeQuality(int quality, int changeBy) => Math.Clamp(quality + changeBy, 0, 50);
+    private static int ChangeQuality(int quality, int changeQualityBy) => Math.Clamp(quality + changeQualityBy, 0, 50);
 }
