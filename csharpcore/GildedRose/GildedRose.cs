@@ -25,6 +25,16 @@ public class GildedRose
                 {
                     item.Quality++;
                 }
+
+                item.SellIn--;
+
+                if (item.SellIn < 0)
+                {
+                    if (item.Quality < 50)
+                    {
+                        item.Quality++;
+                    }
+                }
             }
             else if (isBackstagePasses)
             {
@@ -48,35 +58,9 @@ public class GildedRose
                         }
                     }
                 }
-            }
-            else if (isSulfuras)
-            {
-            }
-            else
-            {
-                if (item.Quality > 0)
-                {
-                    item.Quality--;
-                }
-            }
 
-            if (!isSulfuras)
-            {
                 item.SellIn--;
-            }
 
-            if (isAgedBrie)
-            {
-                if (item.SellIn < 0)
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality++;
-                    }
-                }
-            }
-            else if (isBackstagePasses)
-            {
                 if (item.SellIn < 0)
                 {
                     item.Quality = 0;
@@ -87,6 +71,13 @@ public class GildedRose
             }
             else
             {
+                if (item.Quality > 0)
+                {
+                    item.Quality--;
+                }
+
+                item.SellIn--;
+
                 if (item.SellIn < 0)
                 {
                     if (item.Quality > 0)
