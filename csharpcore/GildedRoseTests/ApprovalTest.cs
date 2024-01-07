@@ -1,17 +1,17 @@
-using ApprovalTests;
-using ApprovalTests.Reporters;
 using NUnit.Framework;
 using System;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
+using VerifyNUnit;
 
 namespace GildedRoseTests;
 
-[UseReporter(typeof(DiffReporter))]
+[TestFixture]
 public class ApprovalTest
 {
     [Test]
-    public void ThirtyDays()
+    public Task ThirtyDays()
     {
         var fakeOutput = new StringBuilder();
         Console.SetOut(new StringWriter(fakeOutput));
@@ -20,6 +20,6 @@ public class ApprovalTest
         TextTestFixture.Main(["30"]);
         var output = fakeOutput.ToString();
 
-        Approvals.Verify(output);
+        return Verifier.Verify(output);
     }
 }
