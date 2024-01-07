@@ -19,17 +19,7 @@ public class GildedRose
             bool isBackstagePasses = item.Name == Names.BACKSTAGE_PASSES;
             bool isSulfuras = item.Name == Names.SULFURAS;
 
-            if (!isAgedBrie && !isBackstagePasses)
-            {
-                if (item.Quality > 0)
-                {
-                    if (!isSulfuras)
-                    {
-                        item.Quality--;
-                    }
-                }
-            }
-            else
+            if (isAgedBrie || isBackstagePasses)
             {
                 if (item.Quality < 50)
                 {
@@ -55,6 +45,16 @@ public class GildedRose
                     }
                 }
             }
+            else
+            {
+                if (!isSulfuras)
+                {
+                    if (item.Quality > 0)
+                    {
+                        item.Quality--;
+                    }
+                }
+            }
 
             if (!isSulfuras)
             {
@@ -63,9 +63,20 @@ public class GildedRose
 
             if (item.SellIn < 0)
             {
-                if (!isAgedBrie)
+                if (isAgedBrie)
                 {
-                    if (!isBackstagePasses)
+                    if (item.Quality < 50)
+                    {
+                        item.Quality++;
+                    }
+                }
+                else
+                {
+                    if (isBackstagePasses)
+                    {
+                        item.Quality = 0;
+                    }
+                    else
                     {
                         if (item.Quality > 0)
                         {
@@ -74,17 +85,6 @@ public class GildedRose
                                 item.Quality--;
                             }
                         }
-                    }
-                    else
-                    {
-                        item.Quality = 0;
-                    }
-                }
-                else
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality++;
                     }
                 }
             }
