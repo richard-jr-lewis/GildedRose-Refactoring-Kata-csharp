@@ -28,7 +28,7 @@ public class GildedRose
 
                 item.SellIn--;
 
-                if (item.SellIn < 0)
+                if (item.SellIn < SellIn.EXPIRY)
                 {
                     changeQualityBy++;
                 }
@@ -37,19 +37,19 @@ public class GildedRose
             {
                 changeQualityBy = Quality.DEFAULT_INCREASE;
 
-                if (item.SellIn < 11)
+                if (item.SellIn < SellIn.BACKSTAGE_PASSES_FIRST_DEADLINE)
                 {
                     changeQualityBy++;
                 }
 
-                if (item.SellIn < 6)
+                if (item.SellIn < SellIn.BACKSTAGE_PASSES_FINAL_DEADLINE)
                 {
                     changeQualityBy++;
                 }
 
                 item.SellIn--;
 
-                if (item.SellIn < 0)
+                if (item.SellIn < SellIn.EXPIRY)
                 {
                     changeQualityBy = -item.Quality;
                 }
@@ -63,7 +63,7 @@ public class GildedRose
 
                 item.SellIn--;
 
-                if (item.SellIn < 0)
+                if (item.SellIn < SellIn.EXPIRY)
                 {
                     changeQualityBy--;
                 }

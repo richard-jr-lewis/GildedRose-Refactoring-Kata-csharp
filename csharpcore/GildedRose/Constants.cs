@@ -14,3 +14,10 @@ internal static class Quality
     internal const int DEFAULT_DECREASE = -1;
     internal const int DEFAULT_INCREASE = 1;
 }
+
+internal static class SellIn
+{
+    internal const int EXPIRY = 0;
+    internal const int BACKSTAGE_PASSES_FIRST_DEADLINE = 11;
+    internal const int BACKSTAGE_PASSES_FINAL_DEADLINE = 6;
+}
