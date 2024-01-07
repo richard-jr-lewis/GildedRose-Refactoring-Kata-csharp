@@ -49,14 +49,14 @@ public class GildedRose
                     }
                 }
             }
+            else if (isSulfuras)
+            {
+            }
             else
             {
-                if (!isSulfuras)
+                if (item.Quality > 0)
                 {
-                    if (item.Quality > 0)
-                    {
-                        item.Quality--;
-                    }
+                    item.Quality--;
                 }
             }
 
