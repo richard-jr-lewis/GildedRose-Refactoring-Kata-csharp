@@ -24,7 +24,7 @@ public class GildedRose
 
             if (isAgedBrie)
             {
-                changeQualityBy = 1;
+                changeQualityBy = Quality.DEFAULT_INCREASE;
 
                 item.SellIn--;
 
@@ -35,7 +35,7 @@ public class GildedRose
             }
             else if (isBackstagePasses)
             {
-                changeQualityBy = 1;
+                changeQualityBy = Quality.DEFAULT_INCREASE;
 
                 if (item.SellIn < 11)
                 {
@@ -59,7 +59,7 @@ public class GildedRose
             }
             else
             {
-                changeQualityBy = -1;
+                changeQualityBy = Quality.DEFAULT_DECREASE;
 
                 item.SellIn--;
 
@@ -76,5 +76,5 @@ public class GildedRose
         }
     }
 
-    private static int ChangeQuality(int quality, int changeQualityBy) => Math.Clamp(quality + changeQualityBy, 0, 50);
+    private static int ChangeQuality(int quality, int changeQualityBy) => Math.Clamp(quality + changeQualityBy, Quality.MIN, Quality.MAX);
 }
