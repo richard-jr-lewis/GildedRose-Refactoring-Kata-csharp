@@ -40,3 +40,18 @@ Run from the `<SOURCE_DIRECTORY>`:
 ./csharpcore/GildedRoseConsole/bin/Debug/net8.0/GildedRoseConsole.exe x
 ```
 where `x` is the number of days to run.
+
+### API
+Run from the `<SOURCE_DIRECTORY>`:
+```
+./csharpcore/GildedRoseApi/bin/Debug/net8.0/GildedRoseApi.exe
+```
+
+In the browser, you can test the following endpoints:
+
+```
+http://localhost:5000/api/gildedrose
+
+http://localhost:5000/api/gildedrose/x
+```
+where `x` is the number of days to run.
