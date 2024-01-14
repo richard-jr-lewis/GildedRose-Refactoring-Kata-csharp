@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text;
 
 namespace GildedRoseKata
 {
     public static class Scenario
     {
-        public static void Run(int? daysOverride)
+        public static string Run(int? daysOverride)
         {
-            Console.WriteLine("OMGHAI!");
+            var stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("OMGHAI!");
 
             var items = new List<Item>{
             new() {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
@@ -44,15 +45,17 @@ namespace GildedRoseKata
 
             for (var i = 0; i < days; i++)
             {
-                Console.WriteLine("-------- day " + i + " --------");
-                Console.WriteLine("name, sellIn, quality");
+                stringBuilder.AppendLine($"-------- day {i} --------");
+                stringBuilder.AppendLine("name, sellIn, quality");
                 for (var j = 0; j < items.Count; j++)
                 {
-                    Console.WriteLine(items[j].Name + ", " + items[j].SellIn + ", " + items[j].Quality);
+                    stringBuilder.AppendLine($"{items[j].Name}, {items[j].SellIn}, {items[j].Quality}");
                 }
-                Console.WriteLine("");
+                stringBuilder.AppendLine();
                 app.UpdateQuality();
             }
+
+            return stringBuilder.ToString();
         }
     }
 }
