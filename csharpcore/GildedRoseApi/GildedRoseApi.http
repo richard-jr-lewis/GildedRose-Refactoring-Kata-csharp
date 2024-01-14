@@ -1,0 +1,9 @@
+@GildedRoseApi_HostAddress = https://localhost:7132
+
+GET {{GildedRoseApi_HostAddress}}/api/gildedrose
+
+###
+
+GET {{GildedRoseApi_HostAddress}}/api/gildedrose/{daysOverride}
+
+###
