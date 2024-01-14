@@ -47,11 +47,25 @@ Run from the `<SOURCE_DIRECTORY>`:
 ./csharpcore/GildedRoseApi/bin/Debug/net8.0/GildedRoseApi.exe
 ```
 
-In the browser, you can test the following endpoints:
-
+In the browser, you can view the Open API specification:
 ```
-http://localhost:5000/api/gildedrose
+https://localhost:<port>/swagger/v1/swagger.json
+```
 
-http://localhost:5000/api/gildedrose/x
+In the browser, you can view the Swagger UI and test the endpoints:
+```
+https://localhost:<port>/swagger
+```
+
+In the browser, you can view the Redoc UI:
+```
+https://localhost:<port>/redoc
+```
+
+In the browser, you can call the following endpoints:
+```
+http://localhost:<port>/api/gildedrose
+
+http://localhost:<port>/api/gildedrose/x
 ```
 where `x` is the number of days to run.
